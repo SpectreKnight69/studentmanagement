@@ -1,0 +1,43 @@
+package com.example.studentmanagement.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.studentmanagement.exeception.ResourceNotFoundException;
+import com.example.studentmanagement.model.Student;
+import com.example.studentmanagement.repository.StudentRepository;
+
+import java.util.List;
+
+@Service
+public class StudentService {
+    
+    @Autowired
+    private StudentRepository studentRepository;
+
+    public List<Student> getAllStudents(){
+        return studentRepository.findAll();
+    }
+
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found with ID: " + id));
+    }
+
+    public Student createStudent(Student student){
+        return studentRepository.save(student);
+    }
+
+    public Student updateStudent(Long Id, Student updatedStudent){
+            Student student = getStudentById(Id);
+            student.setName(updatedStudent.getName());
+            student.setCourse(updatedStudent.getCourse());
+            student.setEmail(updatedStudent.getEmail());
+            return studentRepository.save(student);
+    }       
+
+    public void deleteStudent(Long Id){
+         studentRepository.deleteById(Id);
+    }
+
+}

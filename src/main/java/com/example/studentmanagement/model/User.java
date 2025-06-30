@@ -1,0 +1,88 @@
+package com.example.studentmanagement.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+
+@Entity
+@Getter
+@Setter
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String username;
+    private String password;
+    private String role;
+
+    // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    // private Student student;
+
+    // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    // private Professor professor;
+
+    // Default constructor
+    public User() {}
+
+    // Constructor with fields
+    public User(Long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        // this.student = student;
+        // this.professor = professor;
+    }
+
+    // Getters
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public String getRole(){
+        return this.role;
+    }
+
+    // public Student getStudent() {
+    //     return this.student;
+    // }
+
+    // public Professor getProfessor() {
+    //     return this.professor;
+    // }
+
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role){
+        this.role=role;
+    }
+
+    // public void setStudent(Student student) {
+    //     this.student = student;
+    // }
+
+    // public void setProfessor(Professor professor) {
+    //     this.professor = professor;
+    // }
+}
