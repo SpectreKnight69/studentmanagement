@@ -1,9 +1,19 @@
 package com.example.studentmanagement.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class ProfessorDTO {
     private Long id;
+
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email format is invalid")
     private String email;
+
+    @NotBlank(message = "Department is required")
     private String department;
 
     // Constructors

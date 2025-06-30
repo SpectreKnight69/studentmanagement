@@ -3,12 +3,10 @@ package com.example.studentmanagement.service;
 import com.example.studentmanagement.dto.ProfessorDTO;
 import com.example.studentmanagement.exception.ResourceNotFoundException;
 import com.example.studentmanagement.model.Professor;
-import com.example.studentmanagement.model.Student;
 import com.example.studentmanagement.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.studentmanagement.mapper.ProfessorMapper;
-import com.example.studentmanagement.mapper.StudentMapper;
 
 import java.util.List;
 import java.util.Optional;

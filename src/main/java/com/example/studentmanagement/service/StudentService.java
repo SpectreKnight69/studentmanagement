@@ -8,7 +8,6 @@ import com.example.studentmanagement.exception.ResourceNotFoundException;
 import com.example.studentmanagement.mapper.StudentMapper;
 import com.example.studentmanagement.model.Student;
 import com.example.studentmanagement.repository.StudentRepository;
-import com.example.studentmanagement.model.User;
 
 import java.util.List;
 import java.util.Optional;

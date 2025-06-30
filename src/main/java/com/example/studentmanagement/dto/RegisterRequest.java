@@ -2,12 +2,25 @@ package com.example.studentmanagement.dto;
 
 import com.example.studentmanagement.model.Role;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class RegisterRequest {
+
+    @NotBlank(message = "username is required")
     private String username;
+
+    @NotBlank(message = "password is required")
     private String password;
+    
+    @NotBlank(message = "role is required")
     private Role role;
+
+    @NotBlank(message = "name is required")
     private String name;
+
+    @NotBlank(message = "email is required")
     private String email;
+
     private String course;      
     private String department;  
 

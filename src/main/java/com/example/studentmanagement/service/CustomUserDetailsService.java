@@ -1,6 +1,5 @@
 package com.example.studentmanagement.service;
 
-import com.example.studentmanagement.model.Role;
 import com.example.studentmanagement.model.User;
 import com.example.studentmanagement.repository.UserRepository;
 import org.springframework.security.core.userdetails.*;

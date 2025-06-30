@@ -2,6 +2,8 @@ package com.example.studentmanagement.model;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.validation.constraints.*;
+
 
 @Entity
 public class Professor {
@@ -9,8 +11,15 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name cannot be empty")
     private String name;
+
+    @NotBlank(message = "Email cannot be empty")
+    @Column(unique = true, nullable = false)
+    @Email(message = "Invalid email format")
     private String email;
+
+    @NotBlank(message = "Department cannot be empty")
     private String department;
 
     @OneToOne

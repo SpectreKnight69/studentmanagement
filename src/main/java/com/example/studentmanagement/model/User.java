@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import com.example.studentmanagement.model.Role;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Getter
@@ -15,7 +16,10 @@ public class User {
     private Long id;
 
     @Column(unique = true, nullable = false)
+    @NotBlank(message = "Username cannot be empty")
     private String username;
+
+    @NotBlank(message = "Password cannot be empty")
     private String password;
 
     @Enumerated(EnumType.STRING)

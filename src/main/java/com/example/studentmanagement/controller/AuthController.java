@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.studentmanagement.dto.LoginRequest;
 import com.example.studentmanagement.dto.RegisterRequest;
 import com.example.studentmanagement.service.UserService;
+
+import jakarta.validation.Valid;
+
 import com.example.studentmanagement.model.User;
 import com.example.studentmanagement.security.JwtService;
 import java.util.*;
@@ -38,12 +41,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public User register(@RequestBody RegisterRequest request){
+    public User register(@Valid @RequestBody RegisterRequest request){
         return userService.register(request);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request){
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request){
         Authentication authentication = authManager.authenticate(
             new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
