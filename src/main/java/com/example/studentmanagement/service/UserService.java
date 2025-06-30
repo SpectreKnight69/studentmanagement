@@ -1,8 +1,11 @@
 package com.example.studentmanagement.service;
 
 import com.example.studentmanagement.dto.RegisterRequest;
+import com.example.studentmanagement.model.Professor;
+import com.example.studentmanagement.model.Student;
 import com.example.studentmanagement.model.User;
 import com.example.studentmanagement.repository.UserRepository;
+import com.example.studentmanagement.model.Role;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,23 @@ public class UserService {
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(request.getRole());
+
+         if (request.getRole() == Role.ROLE_STUDENT) {
+        Student student = new Student();
+        student.setName(request.getName());
+        student.setEmail(request.getEmail());
+        student.setCourse(request.getCourse());
+        student.setUser(user);
+        user.setStudent(student);
+        }
+         else if (request.getRole() == Role.ROLE_PROFESSOR) {
+        Professor professor = new Professor();
+        professor.setName(request.getName());
+        professor.setEmail(request.getEmail());
+        professor.setDepartment(request.getDepartment());
+        professor.setUser(user);
+        user.setProfessor(professor);
+    }
         return userRepository.save(user);
     }
 

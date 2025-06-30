@@ -37,7 +37,14 @@ public class StudentService {
     }       
 
     public void deleteStudent(Long Id){
-         studentRepository.deleteById(Id);
+         Student student = getStudentById(Id);
+
+    if (student.getUser() != null) {
+        student.getUser().setStudent(null);
+        student.setUser(null);
+    }
+
+    studentRepository.delete(student);
     }
 
 }

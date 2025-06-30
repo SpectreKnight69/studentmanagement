@@ -2,6 +2,7 @@ package com.example.studentmanagement.model;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Professor {
@@ -15,7 +16,7 @@ public class Professor {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonManagedReference
     private User user;
 
     // Default constructor
