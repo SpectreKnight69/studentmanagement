@@ -3,6 +3,7 @@ package com.example.studentmanagement.model;
 import jakarta.persistence.*;
 import lombok.*;
 import com.example.studentmanagement.model.Role;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Getter
@@ -20,11 +21,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    // private Student student;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Student student;
 
-    // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    // private Professor professor;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Professor professor;
 
     // Default constructor
     public User() {}
@@ -55,13 +58,13 @@ public class User {
         return this.role;
     }
 
-    // public Student getStudent() {
-    //     return this.student;
-    // }
+    public Student getStudent() {
+        return this.student;
+    }
 
-    // public Professor getProfessor() {
-    //     return this.professor;
-    // }
+    public Professor getProfessor() {
+        return this.professor;
+    }
 
     // Setters
     public void setId(Long id) {
@@ -80,11 +83,11 @@ public class User {
         this.role=role;
     }
 
-    // public void setStudent(Student student) {
-    //     this.student = student;
-    // }
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
-    // public void setProfessor(Professor professor) {
-    //     this.professor = professor;
-    // }
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
 }
