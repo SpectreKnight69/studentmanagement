@@ -1,5 +1,6 @@
 com/example/studentmanagement/service/UserService.class
 com/example/studentmanagement/controller/AuthController.class
+com/example/studentmanagement/model/Role.class
 com/example/studentmanagement/model/Professor.class
 com/example/studentmanagement/service/CustomUserDetailsService.class
 com/example/studentmanagement/repository/UserRepository.class

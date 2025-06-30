@@ -2,7 +2,7 @@ package com.example.studentmanagement.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+import com.example.studentmanagement.model.Role;
 
 @Entity
 @Getter
@@ -16,7 +16,9 @@ public class User {
     @Column(unique = true, nullable = false)
     private String username;
     private String password;
-    private String role;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     // private Student student;
@@ -49,7 +51,7 @@ public class User {
         return this.password;
     }
 
-    public String getRole(){
+    public Role getRole(){
         return this.role;
     }
 
@@ -74,7 +76,7 @@ public class User {
         this.password = password;
     }
 
-    public void setRole(String role){
+    public void setRole(Role role){
         this.role=role;
     }
 

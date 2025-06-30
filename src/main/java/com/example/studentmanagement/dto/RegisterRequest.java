@@ -1,9 +1,11 @@
 package com.example.studentmanagement.dto;
 
+import com.example.studentmanagement.model.Role;
+
 public class RegisterRequest {
     private String username;
     private String password;
-    private String role;
+    private Role role;
 
     // Default constructor
     public RegisterRequest() {}
@@ -20,7 +22,7 @@ public class RegisterRequest {
         return this.username;
     }
 
-    public String getRole(){
+    public Role getRole(){
         return this.role;
     }
 
@@ -37,7 +39,7 @@ public class RegisterRequest {
         this.password = password;
     }
 
-    public void getRole(String role){
+    public void getRole(Role role){
         this.role = role;
     }
 }

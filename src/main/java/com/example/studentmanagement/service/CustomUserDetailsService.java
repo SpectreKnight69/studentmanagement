@@ -1,5 +1,6 @@
 package com.example.studentmanagement.service;
 
+import com.example.studentmanagement.model.Role;
 import com.example.studentmanagement.model.User;
 import com.example.studentmanagement.repository.UserRepository;
 import org.springframework.security.core.userdetails.*;
@@ -7,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.*;
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -25,12 +27,12 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        String role = user.getRole();
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority(role))
+                List.of(authority)
         );
     }
 }
