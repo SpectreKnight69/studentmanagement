@@ -3,7 +3,6 @@ package com.example.studentmanagement.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity

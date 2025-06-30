@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import com.example.studentmanagement.repository.UserRepository;
 import com.example.studentmanagement.model.User;
+import com.example.studentmanagement.dto.ProfessorDTO;
+
 
 import jakarta.validation.Valid;
 import java.util.List;
@@ -26,7 +28,7 @@ public class ProfessorController {
 
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public List<Professor> getAllProfessors() {
+    public List<ProfessorDTO> getAllProfessors() {
         return professorService.getAllProfessors();
     }
 
@@ -46,19 +48,19 @@ public class ProfessorController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSOR')")
-    public Professor getProfessorById(@PathVariable Long id) {
+    public ProfessorDTO getProfessorById(@PathVariable Long id) {
         return professorService.getProfessorById(id);
     }
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public Professor createProfessor(@Valid @RequestBody Professor professor) {
+    public ProfessorDTO createProfessor(@Valid @RequestBody ProfessorDTO professor) {
         return professorService.createProfessor(professor);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public Professor updateProfessor(@PathVariable Long id, @Valid @RequestBody Professor professor) {
+    public ProfessorDTO updateProfessor(@PathVariable Long id, @Valid @RequestBody ProfessorDTO professor) {
         return professorService.updateProfessor(id, professor);
     }
 

@@ -1,6 +1,8 @@
 com/example/studentmanagement/service/ProfessorService.class
+com/example/studentmanagement/mapper/ProfessorMapper.class
 com/example/studentmanagement/controller/AuthController.class
 com/example/studentmanagement/model/Role.class
+com/example/studentmanagement/dto/ProfessorDTO.class
 com/example/studentmanagement/service/CustomUserDetailsService.class
 com/example/studentmanagement/repository/StudentRepository.class
 com/example/studentmanagement/security/JwtService.class
