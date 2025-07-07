@@ -9,6 +9,7 @@ import com.example.studentmanagement.service.StudentService;
 import com.example.studentmanagement.model.User;
 import com.example.studentmanagement.repository.UserRepository;
 import com.example.studentmanagement.dto.StudentDTO;
+import com.example.studentmanagement.mapper.StudentMapper;
 
 import jakarta.validation.Valid;
 
@@ -39,10 +40,10 @@ public class StudentController {
 
     @GetMapping("/me")
     @PreAuthorize("hasRole('STUDENT')")
-    public Student getOwnStudentInfo() {
+    public StudentDTO getOwnStudentInfo() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return user.getStudent(); 
+        return StudentMapper.toDTO(user.getStudent()); 
     }
 
     @PostMapping

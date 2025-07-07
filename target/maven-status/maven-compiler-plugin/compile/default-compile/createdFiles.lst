@@ -24,6 +24,7 @@ com/example/studentmanagement/mapper/StudentMapper.class
 com/example/studentmanagement/exception/GlobalExceptionHandler.class
 com/example/studentmanagement/security/JwtAuthenticationFilter.class
 com/example/studentmanagement/controller/StudentController.class
+com/example/studentmanagement/config/RedisConfig.class
 com/example/studentmanagement/dto/RegisterRequest.class
 com/example/studentmanagement/dto/LoginRequest.class
 com/example/studentmanagement/repository/ProfessorRepository.class

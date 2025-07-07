@@ -3,6 +3,7 @@ package com.example.studentmanagement.dto;
 import com.example.studentmanagement.model.Role;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class RegisterRequest {
 
@@ -12,7 +13,7 @@ public class RegisterRequest {
     @NotBlank(message = "password is required")
     private String password;
     
-    @NotBlank(message = "role is required")
+    @NotNull(message = "role is required")
     private Role role;
 
     @NotBlank(message = "name is required")
@@ -28,10 +29,14 @@ public class RegisterRequest {
     public RegisterRequest() {}
 
     // Constructor with fields
-    public RegisterRequest(String username, String password) {
+    public RegisterRequest(String username, String password, Role role, String name, String email, String course, String department) {
         this.username = username;
         this.password = password;
-        
+        this.role = role;
+        this.name = name;
+        this.email = email;
+        this.course = course;
+        this.department = department;
     }
 
     // Getters

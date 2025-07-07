@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "students")
@@ -26,7 +27,7 @@ public class Student {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonIgnore
     private User user;
 
     // Default constructor

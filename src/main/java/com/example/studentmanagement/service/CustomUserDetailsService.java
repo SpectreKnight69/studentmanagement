@@ -2,6 +2,8 @@ package com.example.studentmanagement.service;
 
 import com.example.studentmanagement.model.User;
 import com.example.studentmanagement.repository.UserRepository;
+import com.example.studentmanagement.security.CustomUserDetails;
+
 import org.springframework.security.core.userdetails.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,12 +28,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
-
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPassword(),
-                List.of(authority)
-        );
+        return new CustomUserDetails(user);
     }
 }

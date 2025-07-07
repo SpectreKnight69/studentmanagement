@@ -7,6 +7,8 @@ import com.example.studentmanagement.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.studentmanagement.mapper.ProfessorMapper;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +27,7 @@ public class ProfessorService {
             .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "professor", key = "#id")
     public ProfessorDTO getProfessorById(Long id) {
         Professor professor = professorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Professor not found with id " + id));
@@ -41,6 +44,7 @@ public class ProfessorService {
         return ProfessorMapper.toDTO(professorRepository.save(professor));
     }
 
+    @CacheEvict(value = "professor",key = "#id")
     public ProfessorDTO updateProfessor(Long id, ProfessorDTO dto) {
        Professor professor = professorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Professor not found"));
@@ -49,7 +53,7 @@ public class ProfessorService {
         professor.setDepartment(dto.getDepartment());
         return ProfessorMapper.toDTO(professorRepository.save(professor));
     }
-
+    @CacheEvict(value = "professor",key = "#id")
     public void deleteProfessor(Long id) {
 
     Professor professor = getProfessorEntityById(id);

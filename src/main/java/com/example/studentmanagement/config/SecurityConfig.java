@@ -67,8 +67,8 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // Allow login & register
-                .anyRequest().authenticated() // All other requests just need authentication
+                .requestMatchers("/api/auth/**").permitAll() // Allow all auth endpoints without authentication
+                .anyRequest().authenticated() // All other requests need authentication
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authenticationProvider())

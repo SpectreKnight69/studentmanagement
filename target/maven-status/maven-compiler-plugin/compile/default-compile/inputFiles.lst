@@ -28,3 +28,4 @@
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/config/AppConfig.java
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/model/User.java
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/repository/StudentRepository.java
+/Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/config/RedisConfig.java

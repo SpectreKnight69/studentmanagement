@@ -2,6 +2,7 @@ package com.example.studentmanagement.model;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.*;
 
 
@@ -24,7 +25,7 @@ public class Professor {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonIgnore
     private User user;
 
     // Default constructor

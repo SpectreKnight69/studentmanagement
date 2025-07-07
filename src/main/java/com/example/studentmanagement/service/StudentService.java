@@ -1,6 +1,8 @@
 package com.example.studentmanagement.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.example.studentmanagement.dto.StudentDTO;
@@ -26,7 +28,9 @@ public class StudentService {
             .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "students", key = "#id")
     public StudentDTO getStudentById(Long id) {
+        System.out.println("fetched from db");
         Student student =  studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found with ID: " + id));
                 return StudentMapper.toDTO(student);
@@ -43,6 +47,7 @@ public class StudentService {
         return StudentMapper.toDTO(studentRepository.save(student));
     }
 
+    @CacheEvict(value = "student", key = "#id")
     public StudentDTO updateStudent(Long id, StudentDTO dto) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
@@ -52,8 +57,8 @@ public class StudentService {
         return StudentMapper.toDTO(studentRepository.save(student));
     }      
 
-
-public void deleteStudent(Long Id){
+    @CacheEvict(value = "student",key = "#id")
+    public void deleteStudent(Long Id){
          Student student = getStudentEntityById(Id);
 
     if (student.getUser() != null) {

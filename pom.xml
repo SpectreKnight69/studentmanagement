@@ -60,6 +60,23 @@
         <version>8.0.1.Final</version> <!-- Compatible with Jakarta Validation -->
     </dependency>
 
+    <!-- Spring Cache Abstraction -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+
+    <!-- Spring Data Redis -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+
+    <!-- Jedis Client (or Lettuce - either one works) -->
+    <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+    </dependency>
 
     <!-- Spring Boot Starter Web -->
     <dependency>

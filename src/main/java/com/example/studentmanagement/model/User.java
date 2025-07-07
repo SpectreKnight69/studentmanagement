@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import com.example.studentmanagement.model.Role;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -26,11 +27,11 @@ public class User {
     private Role role;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonIgnore
     private Student student;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonIgnore
     private Professor professor;
 
     // Default constructor

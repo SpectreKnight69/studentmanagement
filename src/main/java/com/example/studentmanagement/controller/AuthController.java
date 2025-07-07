@@ -36,8 +36,8 @@ public class AuthController {
     } 
 
     @GetMapping("/test")
-    public String test() {
-        return "Auth endpoint is working!";
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("Auth endpoint is working!");
     }
 
     @PostMapping("/register")
