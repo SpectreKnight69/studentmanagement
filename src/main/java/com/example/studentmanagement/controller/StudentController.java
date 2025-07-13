@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import com.example.studentmanagement.model.Student;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/api/students")
@@ -49,7 +50,11 @@ public class StudentController {
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'PROFESSOR')")
     public StudentDTO createStudent(@Valid @RequestBody StudentDTO student){
-        return studentService.createStudent(student);
+        try {
+            return studentService.createStudent(student).get();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create student", e);
+        }
     }
 
     @PutMapping("/{id}")
@@ -62,6 +67,12 @@ public class StudentController {
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteStudent(@PathVariable Long id){
          studentService.deleteStudent(id);
+    }
+
+    @DeleteMapping("/all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deleteAllStudents(){
+        studentService.deleteAllStudents();
     }
 
 }

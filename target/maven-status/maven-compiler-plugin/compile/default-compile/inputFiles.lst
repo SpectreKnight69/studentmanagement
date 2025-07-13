@@ -8,6 +8,7 @@
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/exception/ResourceNotFoundException.java
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/controller/AuthController.java
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/repository/ProfessorRepository.java
+/Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/config/AsyncConfig.java
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/controller/ProfessorController.java
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/model/Professor.java
 /Users/rahulvaishnav/Desktop/new/studentmanagement/src/main/java/com/example/studentmanagement/controller/UserController.java
